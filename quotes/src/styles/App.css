@@ -62,3 +62,26 @@ padding-bottom: 90px;
 .clock {
   padding-right: 78px;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cityInput {
+  background: #181818;
+  color: #e4e6eb;
+  font-size: 20px;
+  border: none;
+  text-align: right;
+} 
+
+.cityInput::placeholder {
+  color: #e4e6eb;
+  opacity: 1;
+}
+
+.cityInput::placeholder:active {
+  opacity: 0;
+}

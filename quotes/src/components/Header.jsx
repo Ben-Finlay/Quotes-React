@@ -6,10 +6,13 @@ const Header = (props) => {
   const [time, setTime] = useState(new Date());
   const [weather, setWeather] = useState({name: '', weather: [{main: 'NA'}], main: {temp: 0}});
   const [location, setLocation] = useState('Toronto');
+  const [temp, setTemp] = useState({temp: 'metric', unit: ''});
+  
+  
 
 
   const apiKey = process.env.REACT_APP_WEATHER_KEY;
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=${temp.temp}`;
 
 
 useEffect(() => {
@@ -20,8 +23,8 @@ useEffect(() => {
 const getWeatherData = () => {
   axios.get(apiUrl).then((res) => {
     setWeather(res.data)
-    console.log('weather', weather, 'data', res.data)
-
+    temp.temp === 'metric' ? setTemp({unit: 'C', temp: 'imperial'}) : setTemp({unit: 'F', temp: 'metric'});
+    console.log('weather', weather)
   })  
 }
 
@@ -29,9 +32,14 @@ useEffect(() => {
   getWeatherData()
 }, [])
 
-
 const tempRnd = () => {
   return Math.round(weather["main"]["temp"])
+}
+
+const newCity = (e) => {
+  e.preventDefault();
+  console.log(e)
+  getWeatherData()
 }
 
 const weatherImg = () => {
@@ -82,13 +90,27 @@ const weatherImg = () => {
 RELOAD
 </div> */}
 
-
 <div className="weather">
-  {weather.name}&nbsp;&nbsp;{weatherImg()}&nbsp;&nbsp;{tempRnd()}°C
+  <span>
+
+    <form>
+    <input  className="cityInput" 
+
+            placeholder={location} 
+            onChange={(e) => setLocation(e.target.value)}
+          
+            />
+    <button className="hiddenButton" type='submit' onClick={getWeatherData}></button>
+    </form>
+    
+  </span>
+  &nbsp;&nbsp;
+  <span className="center">{weatherImg()}</span>
+  &nbsp;&nbsp;
+  <span onClick={getWeatherData}>{tempRnd()}°{temp.unit}</span>
 </div>
 
 </section>
-
 
   );
 };
