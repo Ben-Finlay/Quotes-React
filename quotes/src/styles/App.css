@@ -38,7 +38,6 @@ margin: auto;
 width: 80%;
 padding-bottom: 90px;
 
-
 }
 
 .quotes-block {
@@ -57,10 +56,11 @@ padding-bottom: 90px;
 .weather {
   display: flex;
   align-items: center;
+  
 }
 
 .clock {
-  padding-right: 78px;
+  padding-right: 200px;
 }
 
 .center {
@@ -77,6 +77,17 @@ padding-bottom: 90px;
   text-align: right;
 } 
 
+.cityInput:active {
+  border: none;
+  outline: none !important;
+
+}
+
+.cityInput:focus {
+  border: none;
+  outline: none !important;
+}
+
 .cityInput::placeholder {
   color: #e4e6eb;
   opacity: 1;
@@ -84,4 +95,39 @@ padding-bottom: 90px;
 
 .cityInput::placeholder:active {
   opacity: 0;
+  
+}
+
+.hiddenButton {
+  opacity: 0;
+  width: 1px;
+  padding: 0px;
+  border: 0px;
+}
+
+.spin {
+  padding-top: 5px;
+  align-items: center;
+  position: fixed;
+  top: auto;
+  left: 49.3%;
+
+}
+
+.spin:hover {
+  animation: rotation 2s infinite;
+}
+
+
+
+
+
+@keyframes rotation {
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

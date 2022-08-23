@@ -3,44 +3,65 @@ import axios from 'axios'
 
 
 const Header = (props) => {
+  // Variables
   const [time, setTime] = useState(new Date());
-  const [weather, setWeather] = useState({name: '', weather: [{main: 'NA'}], main: {temp: 0}});
+  const [weather, setWeather] = useState({name: '', weather: [{main: 'NA'}], main: {temp: 25}});
   const [location, setLocation] = useState('Toronto');
-  const [temp, setTemp] = useState({temp: 'metric', unit: ''});
-  
-  
+  const [temp, setTemp] = useState({temperature: 'metric', unit: 'C'});
 
+  // Props
+
+  const {
+    getQuotes
+  } = props
+  
+  // Weather API Variables
 
   const apiKey = process.env.REACT_APP_WEATHER_KEY;
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=${temp.temp}`;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
+// useEffect calls (Time and WeatherAPI)
 
 useEffect(() => {
   setInterval(() => setTime(new Date()), 1000);
 }, []);
 
+useEffect(() => {
+  getWeatherData()
+}, [])
+
+// Axios call to get weather data
 
 const getWeatherData = () => {
   axios.get(apiUrl).then((res) => {
     setWeather(res.data)
-    temp.temp === 'metric' ? setTemp({unit: 'C', temp: 'imperial'}) : setTemp({unit: 'F', temp: 'metric'});
     console.log('weather', weather)
   })  
 }
 
-useEffect(() => {
-  getWeatherData()
-}, [])
+//Round temperature from weather API
 
 const tempRnd = () => {
   return Math.round(weather["main"]["temp"])
 }
 
-const newCity = (e) => {
-  e.preventDefault();
-  console.log(e)
-  getWeatherData()
+const flipUnits = () => {
+  if (temp.temperature === 'metric') {
+    setTemp({unit: 'F', temperature: 'imperial'})
+    return weather['main']['temp'] = weather['main']['temp'] * 1.8 + 32; 
+  } else {
+    setTemp({unit: 'C', temperature: 'metric'})
+    return weather['main']['temp'] = (weather['main']['temp'] - 32) * ( 5 / 9 ); 
+  }
 }
+
+// const newCity = (e) => {
+//   console.log('value passed: ', e)
+//   //setLocation(e);
+//   console.log('location', location)
+//   getWeatherData();
+ 
+// }
 
 const weatherImg = () => {
   let conditions = weather['weather'][0]['main']
@@ -86,28 +107,31 @@ const weatherImg = () => {
                 })}
 </div>
 
-{/* <div className="spin">
-RELOAD
-</div> */}
+<div className="spin" onClick={() => getQuotes()}>
+<img src='refresh-cw.svg' alt='Refresh' />
+</div>
 
 <div className="weather">
+
   <span>
-
-    <form>
+    <form onSubmit={event => event.preventDefault()}>
     <input  className="cityInput" 
-
-            placeholder={location} 
+            id='cityInput'
+            name='cityInput'
+            value={location} 
             onChange={(e) => setLocation(e.target.value)}
+            autoComplete="off"
           
             />
-    <button className="hiddenButton" type='submit' onClick={getWeatherData}></button>
+    <input className="hiddenButton" type='submit' onClick={getWeatherData}></input>
     </form>
-    
   </span>
-  &nbsp;&nbsp;
+
+
+  &nbsp;
   <span className="center">{weatherImg()}</span>
   &nbsp;&nbsp;
-  <span onClick={getWeatherData}>{tempRnd()}°{temp.unit}</span>
+  <span onClick={flipUnits}>{tempRnd()}°{temp.unit}</span>
 </div>
 
 </section>

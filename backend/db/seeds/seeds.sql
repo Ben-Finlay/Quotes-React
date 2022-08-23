@@ -245,7 +245,7 @@ VALUES
 ('Arthur Schopenhauer',  'It is a wise thing to be polite; consequently, it is a stupid thing to be rude. To make enemies by unnecessary and willful incivility, is just as insane a proceeding as to set your house on fire.'),
 ('Arthur Schopenhauer',  'Truth can bide its time, for it has a long life before it.'),
 ('Friedrich Nietzsche',  'This is the hardest of all: to close the open hand out of love, and keep modest as a giver.'),
-('',  'There is nothing sacred about universality which makes the shared automatically better than the unshared.'),
+('Richard Rorty',  'There is nothing sacred about universality which makes the shared automatically better than the unshared.'),
 ('Ralph Waldo Emerson',  'You cannot do a kindness too soon, for you never know how soon it will be too late.'),
 ('Rene Descartes',  'If you would be a real seeker after truth, it is necessary that at least once in your life you doubt, as far as possible, all things.'),
 ('Hunter S. Thompson',  'It’s a strange world. Some people get rich and others eat shit and die.
