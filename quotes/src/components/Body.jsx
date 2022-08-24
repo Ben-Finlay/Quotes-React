@@ -17,9 +17,6 @@ const Body = (props) => {
         </section>
       </div>
 
-      <div className="cube">
-
-      </div>
     </div>
   );
 };

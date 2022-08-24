@@ -1,4 +1,6 @@
-
+body {
+  overflow: hidden;
+}
 
 .App {
   text-align: center;
@@ -9,6 +11,7 @@
   font-size: 20px;
   color: white;
   font-family: Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 .body {
@@ -21,9 +24,9 @@
   font-size: calc(10px + 2vmin);
   min-height: 100vh;
   color: #e4e6eb;
+  overflow-x: hidden;
+
 }
-
-
 
 .header {
   display: flex;
@@ -31,6 +34,7 @@
   margin: 20px;
   padding: 5px;
   align-items: center;
+
 }
 
 .quotes-div {
@@ -47,7 +51,7 @@ padding-bottom: 90px;
   
 }
 .author-p {
-  font-size: 28px;
+  font-size: 32px;
   font-style: italic;
 
   float: right;
@@ -56,11 +60,15 @@ padding-bottom: 90px;
 .weather {
   display: flex;
   align-items: center;
+  min-width: 305px;
+  max-width: 305px;
   
 }
 
 .clock {
-  padding-right: 200px;
+  max-width: 305px;
+  min-width: 305px;
+  text-align: left;
 }
 
 .center {
@@ -108,9 +116,6 @@ padding-bottom: 90px;
 .spin {
   padding-top: 5px;
   align-items: center;
-  position: fixed;
-  top: auto;
-  left: 49.3%;
 
 }
 
