@@ -1,10 +1,10 @@
 let dbParams = {};
   dbParams = {
-    host: 'localhost',
+    host: 'dpg-cddfakhgp3jnebdgm94g-a',
     port: 5432,
     user: 'react',
-    password: '123',
-    database: 'quotesreact'
+    password: 'YhPlhNWKAm0CRZoBYiKG9gT9wMrdw9EN',
+    database: 'allquotes'
   };
 
 
