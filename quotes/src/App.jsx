@@ -9,7 +9,7 @@ const App = () => {
   const [randomQuoteQ, setRandomQuoteQ] = useState("");
 
   const getQuotes = () => {
-    const url = "http://localhost:3004";
+    const url = "https://quotes-home-node.onrender.com";
     axios.get(url).then((res) => {
       let data = res.data;
       let randomIndex = Math.floor(Math.random() * data.length);
