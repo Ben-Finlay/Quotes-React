@@ -35,7 +35,7 @@ useEffect(() => {
 const getWeatherData = () => {
   axios.get(apiUrl).then((res) => {
     setWeather(res.data)
-    console.log('weather', weather)
+    console.log('weather', res.data)
   })  
 }
 
