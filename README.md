@@ -4,7 +4,7 @@ A homepage that pulls a random quote from the database and keeps current time an
 
 The perfect splash page for those who like minimalist homepages for their browser.
 
-<img src='https://github.com/Ben-Finlay/Quotes-React/blob/main/quotes/public/readme/homepage.png alt='Quotes!>
+<img src='https://github.com/Ben-Finlay/Quotes-React/blob/main/quotes/public/readme/homepage.png' alt='Quotes!>
 ## Get A New Quote
 
 By clicking on the refresh icon in the header, you can get a new quote to display.
