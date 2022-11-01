@@ -9,7 +9,8 @@ const App = () => {
   const [randomQuoteQ, setRandomQuoteQ] = useState("");
 
   const getQuotes = () => {
-    const url = "https://quotes-home-node.onrender.com";
+    const url = "http://localhost:3004";
+    console.log('here at the start')
     axios.get(url).then((res) => {
       let data = res.data;
       let randomIndex = Math.floor(Math.random() * data.length);
@@ -19,9 +20,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    return () => {
       getQuotes();
-    };
   }, []);
 
 
